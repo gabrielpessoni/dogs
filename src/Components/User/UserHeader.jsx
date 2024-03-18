@@ -14,7 +14,7 @@ const UserHeader = () => {
       case "/conta/postar":
         setTitle("Postar sua foto");
         break;
-      case "/conta/":
+      case "/conta/estatisticas":
         setTitle("Estatísticas");
         break;
       default:
