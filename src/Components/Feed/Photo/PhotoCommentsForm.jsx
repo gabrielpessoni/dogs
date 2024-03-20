@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./PhotoCommentsForm.module.css";
 import EnviarSVG from "../../../Assets/EnviarSVG";
 import useFetch from "../../../Hooks/useFetch";
 import Error from "../../Helpers/Error";
@@ -19,18 +20,19 @@ const PhotoCommentsForm = ({ id, setComments }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <textarea
+        className={styles.textarea}
         id="comment"
         name="comment"
         placeholder="Comente..."
         value={comment}
         onChange={({ target }) => setComment(target.value)}
       />
-      <button>
-        <EnviarSVG /> Enviar
+      <button className={styles.button}>
+        <EnviarSVG />
       </button>
-      <Error error="error" />
+      <Error error={error} />
     </form>
   );
 };

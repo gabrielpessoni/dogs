@@ -7,9 +7,15 @@ const PhotoComments = (props) => {
   const [comments, setComments] = React.useState(() => props.comments);
   const { login } = React.useContext(UserContext);
 
+  React.useEffect(() => {
+    commentsSection.current.scrollTop = commentsSection.current.scrollHeight;
+  }, [comments]);
+
+  const commentsSection = React.useRef(null);
+
   return (
-    <div>
-      <ul className={styles.comments}>
+    <>
+      <ul ref={commentsSection} className={styles.comments}>
         {comments.map((comment) => (
           <li key={comment.comment_ID}>
             <b>{comment.comment_author}: </b>
@@ -17,9 +23,8 @@ const PhotoComments = (props) => {
           </li>
         ))}
       </ul>
-
       {login && <PhotoCommentsForm id={props.id} setComments={setComments} />}
-    </div>
+    </>
   );
 };
 
